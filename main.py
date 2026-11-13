@@ -1,5 +1,6 @@
 import webbrowser
 from tkinter import Tk, Label, Button, Text
+from Pages.WelcomePages import WelcomePage
 
 running = True
 
@@ -20,6 +21,7 @@ class PadPos:
 fontSize = (10 + 4) + 5
 
 r = Tk()
+
 
 while running:
 
@@ -43,14 +45,14 @@ while running:
         lbl.pack()
         text.pack()
 
+        welcome = WelcomePage(True, 10, 30)
 
-        def openWebsite() -> None:
-            webbrowser.open(url=str(text.get("1.0", "end")))
+        if welcome.isLoaded():
+            def openWebsite() -> None:
+                webbrowser.open(url=str(text.get("1.0", "end")))
 
-
-        r.geometry(window2.GetGeo())
-        b2  = Button(r, text="Open Website", command=openWebsite)
-        b2.config(bg="black", fg="white", pady=9, padx=9, width=100)
-        b2.pack(side="bottom", anchor="n")
-        r.mainloop()
-
+            r.geometry(window2.GetGeo())
+            b2 = Button(r, text="Open Website", command=openWebsite)
+            b2.config(bg="black", fg="white", pady=7, padx=80)
+            b2.pack(side="bottom", anchor="n")
+            r.mainloop()
